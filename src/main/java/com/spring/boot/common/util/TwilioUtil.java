@@ -2,6 +2,7 @@ package com.spring.boot.common.util;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Call;
+import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 import java.net.URI;
@@ -23,7 +24,17 @@ public class TwilioUtil {
 
     }
 
+    public static void phoneMessage(String phone){
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        String from = "12393603007";
+        String to = "+86" + phone;
+        Message message = Message.creator(new PhoneNumber(to), new PhoneNumber(from), "test").create();
+        System.out.println(message.getSid());
+
+    }
+
     public static void main(String[] args) {
-        phoneCall("15926350676");
+        phoneMessage("");
     }
 }
