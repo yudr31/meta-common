@@ -1,0 +1,32 @@
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator
+    metadata-map:
+      user:
+        name: "admin"         #These two are needed so that the server
+        password: "admin"
+  client:
+    service-url:
+      defaultZone: http://eureka:9001/eureka/  # 设置与Eureka Server交互的地址查询服务和注册服务
+
+spring:
+  cloud:
+    config:
+      name: ${spring.application.name}
+      profile: dev
+      uri: http://config:9700
+
+logging:
+  level:
+    com.spring.boot: info
+  path: logs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    endpoint:
+      health:
+        show-details: ALWAYS
