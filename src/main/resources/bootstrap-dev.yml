@@ -8,14 +8,14 @@ eureka:
         password: "admin"
   client:
     service-url:
-      defaultZone: http://eureka:9001/eureka/  # 设置与Eureka Server交互的地址查询服务和注册服务
+      defaultZone: http://eureka.gulang.work/eureka/  # 设置与Eureka Server交互的地址查询服务和注册服务
 
 spring:
   cloud:
     config:
       name: ${spring.application.name}
       profile: dev
-      uri: http://config:9700
+      uri: http://config.gulang.work
 
 logging:
   level:
